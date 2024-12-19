@@ -1,0 +1,35 @@
+# Workflow name
+name: Build and push Docker image to Docker Hub
+
+# Trigger workflow on push events
+on: push
+
+jobs:
+    push_to_registry:
+        name: push Docker image to Docker Hub
+        runs-on: ubuntu-latest
+
+        steps:
+            # Step 1: Checkout the repository
+            - name: Check out the repo
+              uses: actions/checkout@v3
+
+            # Step 2: Authenticate with Docker Hub
+            - name: Login to Docker Hub
+              uses: docker/login-action@v2
+              with:
+                username: ${{secrets.DOCKERHUB_USER}}
+                password: ${{secrets.DOCKERHUB_TOKEN}}
+            
+            # Step 3: Build and push the Docker image
+            - name: Build and push Docker image
+              uses: docker/build-push-action@v4
+              with:
+                # specify the directory containing the docker file
+                context: DockerFileFolder/
+                # Enable pushing to registry
+                push: true
+                # Define image name and tag
+                tags: rmanimaran/githubactionhub:latest
+
+
