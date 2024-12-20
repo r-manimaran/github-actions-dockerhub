@@ -1,0 +1,1 @@
+[![Build and push Docker image to Docker Hub](https://github.com/r-manimaran/github-actions-dockerhub/actions/workflows/pushToDockerHub.yml/badge.svg)](https://github.com/r-manimaran/github-actions-dockerhub/actions/workflows/pushToDockerHub.yml)
